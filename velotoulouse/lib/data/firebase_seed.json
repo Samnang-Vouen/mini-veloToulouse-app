@@ -1,0 +1,149 @@
+{
+  "stations": {
+    "1": {
+      "id": "1",
+      "name": "WAT PHNOM",
+      "streetName": "Confederation de la Russie Blvd, Khan Daun Penh",
+      "latitude": 11.5754,
+      "longitude": 104.9214,
+      "docks": [
+        { "id": "01", "bike": "BIKE-001" },
+        { "id": "02", "bike": "BIKE-002" },
+        { "id": "03", "bike": "BIKE-003" }
+      ]
+    },
+    "2": {
+      "id": "2",
+      "name": "ROYAL PALACE",
+      "streetName": "Samdech Sothearos Blvd, Khan Daun Penh",
+      "latitude": 11.5626,
+      "longitude": 104.9304,
+      "docks": [
+        { "id": "01", "bike": "BIKE-011" },
+        { "id": "02", "bike": "BIKE-012" },
+        { "id": "03", "bike": "BIKE-013" },
+        { "id": "04", "bike": "BIKE-014" },
+        { "id": "05", "bike": "BIKE-015" },
+        { "id": "06", "bike": "BIKE-016" },
+        { "id": "07", "bike": "BIKE-017" },
+        { "id": "08", "bike": "BIKE-018" },
+        { "id": "09", "bike": "BIKE-019" },
+        { "id": "10", "bike": "BIKE-020" },
+        { "id": "11", "bike": "BIKE-021" },
+        { "id": "12", "bike": "BIKE-022" }
+      ]
+    },
+    "4": {
+      "id": "4",
+      "name": "RIVERSIDE",
+      "streetName": "Sisowath Quay, Khan Daun Penh",
+      "latitude": 11.5638,
+      "longitude": 104.9320,
+      "docks": [
+        { "id": "01", "bike": "BIKE-031" },
+        { "id": "02", "bike": "BIKE-032" },
+        { "id": "03", "bike": "BIKE-033" },
+        { "id": "04", "bike": "BIKE-034" },
+        { "id": "05", "bike": "BIKE-035" }
+      ]
+    },
+    "5": {
+      "id": "5",
+      "name": "INDEPENDENCE MONUMENT",
+      "streetName": "Norodom Blvd, Khan Chamkarmon",
+      "latitude": 11.5535,
+      "longitude": 104.9300,
+      "docks": [
+        { "id": "01", "bike": "BIKE-041" },
+        { "id": "02", "bike": "BIKE-042" },
+        { "id": "03", "bike": "BIKE-043" },
+        { "id": "04", "bike": "BIKE-044" },
+        { "id": "05", "bike": "BIKE-045" },
+        { "id": "06", "bike": "BIKE-046" },
+        { "id": "07", "bike": "BIKE-047" },
+        { "id": "08", "bike": "BIKE-048" }
+      ]
+    },
+    "6": {
+      "id": "6",
+      "name": "OLYMPIC STADIUM",
+      "streetName": "Sihanouk Blvd, Khan Chamkarmon",
+      "latitude": 11.5586,
+      "longitude": 104.9112,
+      "docks": [
+        { "id": "01", "bike": "BIKE-051" },
+        { "id": "02", "bike": "BIKE-052" },
+        { "id": "03", "bike": "BIKE-053" }
+      ]
+    },
+    "7": {
+      "id": "7",
+      "name": "TOUL SLENG MUSEUM",
+      "streetName": "St.113, Khan Chamkarmon",
+      "latitude": 11.5494,
+      "longitude": 104.9173,
+      "docks": [
+        { "id": "01", "bike": "BIKE-061" },
+        { "id": "02", "bike": "BIKE-062" },
+        { "id": "03", "bike": "BIKE-063" },
+        { "id": "04", "bike": "BIKE-064" },
+        { "id": "05", "bike": "BIKE-065" },
+        { "id": "06", "bike": "BIKE-066" },
+        { "id": "07", "bike": "BIKE-067" }
+      ]
+    },
+    "8": {
+      "id": "8",
+      "name": "BKK1 MARKET",
+      "streetName": "St.278, Khan Chamkarmon",
+      "latitude": 11.5462,
+      "longitude": 104.9222,
+      "docks": [
+        { "id": "01", "bike": "BIKE-071" },
+        { "id": "02", "bike": "BIKE-072" },
+        { "id": "03", "bike": "BIKE-073" }
+      ]
+    }
+  },
+  "subscription_plans": {
+    "1": {
+      "id": "1",
+      "name": "DAY PASS",
+      "price": 9,
+      "period": "day",
+      "duration": "24 hours",
+      "freeMinutes": 30,
+      "badge": null
+    },
+    "2": {
+      "id": "2",
+      "name": "MONTHLY PASS",
+      "price": 99,
+      "period": "month",
+      "duration": "30 days",
+      "freeMinutes": 30,
+      "badge": "BEST FOR DAILY COMMUTERS"
+    },
+    "3": {
+      "id": "3",
+      "name": "ANNUAL PASS",
+      "price": 999,
+      "period": "year",
+      "duration": "365 days",
+      "freeMinutes": 60,
+      "badge": null
+    }
+  },
+  "users": {
+    "user_001": {
+      "id": "user_001",
+      "email": "demo@velotoulouse.com",
+      "subscription": {
+        "planId": "2",
+        "startDate": "2026-04-20T08:00:00.000Z",
+        "bonusDurationSeconds": 0
+      },
+      "booking": null
+    }
+  }
+}
