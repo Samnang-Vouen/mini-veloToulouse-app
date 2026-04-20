@@ -11,14 +11,19 @@ class AppColors {
   static const Color textGrey = Color(0xFF6B6B6B);
 
   static const Color background = Color(0xFFFFFFFF);
+  static const Color backgroundAlt = Color(0xFFF5F6FA);
   static const Color surface = Color(0xFFFFFFFF);
   static const Color divider = Color(0xFFE2E2E2);
   static const Color disabled = Color(0xFFCCCCCC);
+  static const Color cardDisabled = Color(0xFFE8E9EE);
 
-  static Color get textNormal => AppColors.textDark;
-  static Color get textLight => AppColors.textGrey;
-  static Color get iconNormal => AppColors.textDark;
-  static Color get iconLight => AppColors.textGrey;
+  static const Color error = Color(0xFFD32F2F);
+
+  /// Subtle shadow: equivalent to Colors.black12 (opacity 0.07)
+  static const Color shadowLight = Color(0x1F000000);
+
+  /// Medium shadow: equivalent to Colors.black26 (opacity 0.26)
+  static const Color shadowMedium = Color(0x42000000);
 }
 
 ///
@@ -29,10 +34,24 @@ class AppTextStyles {
     fontSize: 22,
     fontWeight: FontWeight.w700,
   );
+
+  /// Heavy heading – same size as [heading] but w900 weight.
+  static TextStyle headingHeavy = const TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w900,
+  );
+
   static TextStyle title = const TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w600,
   );
+
+  /// Bold title – 17 px / w700, used for modal and section headers.
+  static TextStyle titleBold = const TextStyle(
+    fontSize: 17,
+    fontWeight: FontWeight.w700,
+  );
+
   static TextStyle body = const TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
@@ -41,10 +60,24 @@ class AppTextStyles {
     fontSize: 13,
     fontWeight: FontWeight.w400,
   );
+
+  /// Small bold caption – 11 px / w700, used for badge and uppercase labels.
+  static TextStyle caption = const TextStyle(
+    fontSize: 11,
+    fontWeight: FontWeight.w700,
+  );
+
   static TextStyle price = const TextStyle(
     fontSize: 28,
     fontWeight: FontWeight.w700,
   );
+
+  /// Medium price display – 18 px / w800.
+  static TextStyle priceMedium = const TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w800,
+  );
+
   static TextStyle button = const TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.w700,
@@ -60,7 +93,6 @@ class AppSpacing {
   static const double m = 16;
   static const double l = 24;
   static const double xl = 32;
-  static const double xxl = 48;
 
   static const double radius = 12;
   static const double radiusLarge = 24;
