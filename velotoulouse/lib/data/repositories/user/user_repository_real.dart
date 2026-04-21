@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:velotoulouse/data/config/firebase_config.dart';
 import 'package:velotoulouse/data/dto/subscription_plan_dto.dart';
+import 'package:velotoulouse/data/dto/user_dto.dart';
 import 'package:velotoulouse/data/repositories/user/user_repository.dart';
 import 'package:velotoulouse/model/subscription/subscription_plan.dart';
 import 'package:velotoulouse/model/user/user.dart';
@@ -33,11 +34,7 @@ class UserRepositoryReal implements UserRepository {
     final json = jsonDecode(response.body) as Map<String, dynamic>;
     final sub = await getActiveSubscription();
 
-    return User(
-      id: json['id'] as String,
-      email: json['email'] as String? ?? '',
-      subscription: sub,
-    );
+    return UserDto.fromJson(json).copyWith(subscription: sub);
   }
 
   @override
