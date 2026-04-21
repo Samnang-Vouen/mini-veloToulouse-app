@@ -28,7 +28,7 @@ class UserSubscription {
     }
   }
 
-  DateTime get endDate => _baseEndDate();
+  DateTime get endDate => _baseEndDate().add(bonusDuration);
 
   bool get isActive => endDate.isAfter(DateTime.now());
 

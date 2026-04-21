@@ -74,7 +74,7 @@ class UserRepositoryReal implements UserRepository {
 
   @override
   Future<void> subscribe(SubscriptionPlan plan) async {
-    await _writeSubscription(plan, plan.bonusDuration);
+    await _writeSubscription(plan, Duration.zero);
   }
 
   @override
