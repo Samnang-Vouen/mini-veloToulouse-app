@@ -20,7 +20,6 @@ class BookingRepositoryMock implements BookingRepository {
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       stationId: stationId,
       dockId: dockId,
-      startTime: DateTime.now(),
     );
   }
 
