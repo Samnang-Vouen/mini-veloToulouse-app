@@ -59,6 +59,7 @@ class _MapContentState extends State<MapContent> {
                         ).then((bookedDockIds) {
                           if (!context.mounted) return;
                           mapVm.recordBookings(station.id, bookedDockIds ?? {});
+                          mapVm.loadStations();
                         });
                       },
                       child: StationMarkerWidget(
