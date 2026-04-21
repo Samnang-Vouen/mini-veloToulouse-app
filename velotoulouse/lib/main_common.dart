@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:velotoulouse/ui/screens/map_screen.dart';
+import 'package:velotoulouse/ui/screens/map/map_screen.dart';
 import 'package:velotoulouse/ui/screens/subcription_screen.dart';
 import 'package:velotoulouse/ui/theme/theme.dart';
 
