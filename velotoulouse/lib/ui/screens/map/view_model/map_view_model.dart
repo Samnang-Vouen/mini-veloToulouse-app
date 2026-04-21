@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:velotoulouse/data/repositories/station/station_repository_real.dart';
 import 'package:velotoulouse/model/station/station.dart';
+import 'package:velotoulouse/ui/states/user_state.dart';
 import 'package:velotoulouse/ui/utils/async_value.dart';
 
 class MapViewModel extends ChangeNotifier {
   final StationRepository stationRepository;
+  final UserState _userState;
 
   AsyncValue<List<Station>> stationsValue = AsyncValue.loading();
 
@@ -45,8 +47,34 @@ class MapViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  MapViewModel({required this.stationRepository}) {
+  MapViewModel({required this.stationRepository, required UserState userState})
+    : _userState = userState {
+    final Booking = _userState.user?.bookings.isNotEmpty == true
+        ? _userState.user!.bookings.first
+        : null;
+    if (Booking != null) {
+      _bookedDocksPerStation[Booking.stationId] = {Booking.dockId};
+    }
+    _userState.addListener(_onUserStateChanged);
     loadStations();
+  }
+
+    void _onUserStateChanged() {
+    final booking = _userState.user?.bookings.isNotEmpty == true
+        ? _userState.user!.bookings.first
+        : null;
+    if (booking == null) return;
+    final existing = _bookedDocksPerStation[booking.stationId];
+    if (existing == null || !existing.contains(booking.dockId)) {
+      _bookedDocksPerStation[booking.stationId] = {booking.dockId};
+      notifyListeners();
+    }
+  }
+
+  @override
+  void dispose() {
+    _userState.removeListener(_onUserStateChanged);
+    super.dispose();
   }
 
   Future<void> loadStations() async {
