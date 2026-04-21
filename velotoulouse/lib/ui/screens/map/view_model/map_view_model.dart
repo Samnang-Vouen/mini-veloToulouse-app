@@ -47,6 +47,14 @@ class MapViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> onStationDetailClosed(
+    String stationId,
+    Set<String> bookedDockIds,
+  ) async {
+    recordBookings(stationId, bookedDockIds);
+    await loadStations();
+  }
+
   MapViewModel({required this.stationRepository, required UserState userState})
     : _userState = userState {
     final booking = _userState.user?.bookings.isNotEmpty == true
@@ -59,7 +67,7 @@ class MapViewModel extends ChangeNotifier {
     loadStations();
   }
 
-    void _onUserStateChanged() {
+  void _onUserStateChanged() {
     final booking = _userState.user?.bookings.isNotEmpty == true
         ? _userState.user!.bookings.first
         : null;
