@@ -47,14 +47,14 @@ class _MapContentState extends State<MapContent> {
                     child: GestureDetector(
                       onTap: () {
                         final mapVm = context.read<MapViewModel>();
+                        final alreadyBooked = mapVm.getBookedDocks(station.id);
                         Navigator.push<Set<String>>(
                           context,
                           MaterialPageRoute(
-                            builder: (_) =>
-                                ChangeNotifierProvider<MapViewModel>.value(
-                                  value: mapVm,
-                                  child: StationDetailScreen(station: station),
-                                ),
+                            builder: (_) => StationDetailScreen(
+                              station: station,
+                              initialBookedDockIds: alreadyBooked,
+                            ),
                           ),
                         ).then((bookedDockIds) {
                           if (!context.mounted) return;
