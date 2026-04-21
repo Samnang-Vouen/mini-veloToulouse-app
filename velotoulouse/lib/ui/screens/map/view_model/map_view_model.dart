@@ -49,11 +49,11 @@ class MapViewModel extends ChangeNotifier {
 
   MapViewModel({required this.stationRepository, required UserState userState})
     : _userState = userState {
-    final Booking = _userState.user?.bookings.isNotEmpty == true
+    final booking = _userState.user?.bookings.isNotEmpty == true
         ? _userState.user!.bookings.first
         : null;
-    if (Booking != null) {
-      _bookedDocksPerStation[Booking.stationId] = {Booking.dockId};
+    if (booking != null) {
+      _bookedDocksPerStation[booking.stationId] = {booking.dockId};
     }
     _userState.addListener(_onUserStateChanged);
     loadStations();

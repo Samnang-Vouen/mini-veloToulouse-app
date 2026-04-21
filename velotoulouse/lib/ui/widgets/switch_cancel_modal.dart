@@ -201,7 +201,9 @@ class _ChoiceTile extends StatelessWidget {
                   ),
                   Radio<bool>(
                     value: true,
+                    // ignore: deprecated_member_use
                     groupValue: selected,
+                    // ignore: deprecated_member_use
                     onChanged: (_) => onTap(),
                     activeColor: AppColors.primary,
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -261,7 +263,9 @@ class _PlanRadioTile extends StatelessWidget {
             ),
             Radio<bool>(
               value: true,
+              // ignore: deprecated_member_use
               groupValue: selected,
+              // ignore: deprecated_member_use
               onChanged: (_) => onTap(),
               activeColor: AppColors.primary,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,

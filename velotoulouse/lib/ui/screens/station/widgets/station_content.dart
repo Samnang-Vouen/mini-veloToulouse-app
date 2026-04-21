@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:velotoulouse/model/station/station.dart';
 import 'package:velotoulouse/ui/screens/station/view_model/station_detail_view_model.dart';
-import 'package:velotoulouse/ui/widgets/dock_booking_modal.dart';
 import 'package:velotoulouse/ui/screens/subscription/subcription_screen.dart';
+import 'package:velotoulouse/ui/widgets/dock_booking_modal.dart';
 import 'package:velotoulouse/ui/theme/theme.dart';
 import 'package:velotoulouse/ui/widgets/book_hint_widget.dart';
 import 'package:velotoulouse/ui/widgets/dock_list_item_widget.dart';
@@ -25,6 +25,7 @@ class StationContent extends StatelessWidget {
 
     return PopScope(
       canPop: false,
+      // ignore: deprecated_member_use
       onPopInvoked: (didPop) {
         if (didPop) return;
         _popWithCount(context);

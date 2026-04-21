@@ -3,9 +3,11 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
 import 'package:velotoulouse/ui/screens/map/view_model/map_view_model.dart';
+import 'package:velotoulouse/ui/screens/station/station_detail_screen.dart';
 import 'package:velotoulouse/ui/theme/theme.dart';
 import 'package:velotoulouse/ui/widgets/map_icon_button.dart';
 import 'package:velotoulouse/ui/widgets/map_search_bar.dart';
+import 'package:velotoulouse/ui/widgets/station_marker_widget.dart';
 
 class MapContent extends StatefulWidget {
   const MapContent({super.key});

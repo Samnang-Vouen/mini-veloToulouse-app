@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:velotoulouse/ui/screens/map/map_screen.dart';
-import 'package:velotoulouse/ui/screens/subcription_screen.dart';
+import 'package:velotoulouse/ui/screens/subscription/subcription_screen.dart';
 import 'package:velotoulouse/ui/theme/theme.dart';
 
-void mainCommon() {
+void mainCommon(List<InheritedProvider> providers) {
   runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: appTheme,
-      home: const MyApp(),
+    MultiProvider(
+      providers: providers,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: appTheme,
+        home: const MyApp(),
+      ),
     ),
   );
 }
@@ -23,13 +27,16 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = [MapScreen(), SubcriptionScreen()];
-
   @override
   Widget build(BuildContext context) {
+    final pages = [
+      MapScreen(),
+      SubcriptionScreen(onBack: () => setState(() => _currentIndex = 0)),
+    ];
+
     return Scaffold(
       backgroundColor: AppColors.background,
-      body: _pages[_currentIndex],
+      body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) => setState(() => _currentIndex = index),
