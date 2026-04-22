@@ -16,7 +16,6 @@ class SubscriptionViewModel extends ChangeNotifier {
 
   List<SubscriptionPlan> get plans => plansValue.data ?? [];
 
-  /// Delegates to global state — always reflects the latest subscription.
   UserSubscription? get activeSubscription => _userState.user?.subscription;
 
   SubscriptionViewModel({
@@ -26,8 +25,7 @@ class SubscriptionViewModel extends ChangeNotifier {
   }) : _repository = subscriptionRepository,
        _userRepository = userRepository,
        _userState = userState {
-    // Forward global-state changes to this VM's listeners (the subscription
-    // screen rebuilds automatically when UserState updates).
+
     _userState.addListener(notifyListeners);
     loadPlans();
   }

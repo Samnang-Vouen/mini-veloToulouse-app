@@ -28,7 +28,7 @@ class UserRepositoryMock implements UserRepository {
     _activeSubscription = UserSubscription(
       plan: plan,
       startDate: DateTime.now(),
-      bonusDuration: plan.bonusDuration,
+      bonusDuration: Duration.zero,
     );
   }
 

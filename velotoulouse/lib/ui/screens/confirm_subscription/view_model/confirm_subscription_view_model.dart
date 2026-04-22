@@ -21,7 +21,6 @@ class ConfirmSubscriptionViewModel extends ChangeNotifier {
 
     try {
       await _userRepository.subscribe(plan);
-      // Refresh global state so every listening screen is immediately updated.
       await _userState.refreshSubscription();
       return true;
     } catch (_) {
