@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:velotoulouse/data/repositories/station/station_repository_real.dart';
+import 'package:velotoulouse/data/repositories/station/station_repository.dart';
 import 'package:velotoulouse/model/station/station.dart';
 import 'package:velotoulouse/ui/states/user_state.dart';
 import 'package:velotoulouse/ui/utils/async_value.dart';
