@@ -1,5 +1,5 @@
 import 'package:velotoulouse/data/dummy_data.dart';
-import 'package:velotoulouse/data/repositories/station/station_repository_real.dart';
+import 'package:velotoulouse/data/repositories/station/station_repository.dart';
 import 'package:velotoulouse/model/station/station.dart';
 
 class StationRepositoryMock implements StationRepository {

@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:velotoulouse/ui/screens/map/view_model/map_view_model.dart';
 import 'package:velotoulouse/ui/screens/station/station_detail_screen.dart';
 import 'package:velotoulouse/ui/theme/theme.dart';
-import 'package:velotoulouse/ui/widgets/map_icon_button.dart';
 import 'package:velotoulouse/ui/widgets/map_search_bar.dart';
 import 'package:velotoulouse/ui/widgets/station_marker_widget.dart';
 
@@ -81,30 +80,6 @@ class _MapContentState extends State<MapContent> {
             child: const MapSearchBar(),
           ),
 
-          Positioned(
-            top: MediaQuery.of(context).padding.top + 70,
-            left: 16,
-            child: const _BikeShortcutButton(),
-          ),
-
-          Positioned(
-            right: 16,
-            bottom: 130,
-            child: Column(
-              children: [
-                MapIconButton(
-                  icon: Icons.refresh,
-                  onTap: () => _mapController.move(_watPhnom, 14),
-                ),
-                const SizedBox(height: 10),
-                MapIconButton(
-                  icon: Icons.my_location,
-                  onTap: () => _mapController.move(_watPhnom, 15),
-                ),
-              ],
-            ),
-          ),
-
           if (vm.stationsValue.isLoading)
             const Positioned.fill(
               child: ColoredBox(
@@ -131,28 +106,6 @@ class _MapContentState extends State<MapContent> {
   }
 }
 
-class _BikeShortcutButton extends StatelessWidget {
-  const _BikeShortcutButton();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-      decoration: BoxDecoration(
-        color: AppColors.primary,
-        borderRadius: BorderRadius.circular(24),
-        boxShadow: const [
-          BoxShadow(
-            color: AppColors.shadowMedium,
-            blurRadius: 6,
-            offset: Offset(0, 2),
-          ),
-        ],
-      ),
-      child: const Icon(Icons.directions_bike, color: Colors.white, size: 22),
-    );
-  }
-}
 
 class _ErrorBanner extends StatelessWidget {
   final String message;
