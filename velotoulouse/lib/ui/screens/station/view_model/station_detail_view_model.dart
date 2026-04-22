@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:velotoulouse/data/repositories/booking/booking_repository.dart';
+import 'package:velotoulouse/model/station/station.dart';
 import 'package:velotoulouse/model/user/user_subscription.dart';
 import 'package:velotoulouse/ui/states/user_state.dart';
 
 class StationDetailViewModel extends ChangeNotifier {
   final BookingRepository bookingRepository;
   final UserState userState;
-  final String stationId;
+  final Station station;
+  String get stationId => station.id;
 
   String? _selectedDockId;
   final Set<String> _bookedDockIds = {};
@@ -21,13 +23,13 @@ class StationDetailViewModel extends ChangeNotifier {
   StationDetailViewModel({
     required this.bookingRepository,
     required this.userState,
-    required this.stationId,
+    required this.station,
     Set<String> initialBookedDockIds = const {},
   }) {
-    _init(initialBookedDockIds);
+    init(initialBookedDockIds);
   }
 
-  void _init(Set<String> initialBookedDockIds) {
+  void init(Set<String> initialBookedDockIds) {
     _bookedDockIds.addAll(initialBookedDockIds);
 
     final booking = userState.user?.bookings.isNotEmpty == true

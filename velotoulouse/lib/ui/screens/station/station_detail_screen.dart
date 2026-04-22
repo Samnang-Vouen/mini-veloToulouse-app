@@ -22,10 +22,10 @@ class StationDetailScreen extends StatelessWidget {
       create: (context) => StationDetailViewModel(
         bookingRepository: context.read<BookingRepository>(),
         userState: context.read<UserState>(),
-        stationId: station.id,
+        station: station,
         initialBookedDockIds: initialBookedDockIds,
       ),
-      child: StationContent(station: station),
+      child: const StationContent(),
     );
   }
 }

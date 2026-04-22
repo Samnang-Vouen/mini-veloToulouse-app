@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:velotoulouse/model/station/station.dart';
 import 'package:velotoulouse/ui/screens/station/view_model/station_detail_view_model.dart';
 import 'package:velotoulouse/ui/screens/subscription/subcription_screen.dart';
 import 'package:velotoulouse/ui/widgets/dock_booking_modal.dart';
@@ -10,9 +9,7 @@ import 'package:velotoulouse/ui/widgets/dock_list_item_widget.dart';
 import 'package:velotoulouse/ui/widgets/station_header_widget.dart';
 
 class StationContent extends StatelessWidget {
-  final Station station;
-
-  const StationContent({super.key, required this.station});
+  const StationContent({super.key});
 
   void _popWithCount(BuildContext context) {
     final bookedIds = context.read<StationDetailViewModel>().bookedDockIds;
@@ -22,6 +19,7 @@ class StationContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final vm = context.watch<StationDetailViewModel>();
+    final station = vm.station;
 
     return PopScope(
       canPop: false,
