@@ -6,7 +6,7 @@ import 'package:velotoulouse/ui/utils/async_value.dart';
 
 class MapViewModel extends ChangeNotifier {
   final StationRepository stationRepository;
-  final UserState _userState;
+  final UserState userState;
 
   AsyncValue<List<Station>> stationsValue = AsyncValue.loading();
 
@@ -16,6 +16,39 @@ class MapViewModel extends ChangeNotifier {
 
   String _searchQuery = '';
   String get searchQuery => _searchQuery;
+
+  MapViewModel({required this.stationRepository, required this.userState}) {
+    _init();
+  }
+
+  void _init() {
+    final booking = userState.user?.bookings.isNotEmpty == true
+        ? userState.user!.bookings.first
+        : null;
+    if (booking != null) {
+      _bookedDocksPerStation[booking.stationId] = {booking.dockId};
+    }
+    userState.addListener(_onUserStateChanged);
+    loadStations();
+  }
+
+  void _onUserStateChanged() {
+    final booking = userState.user?.bookings.isNotEmpty == true
+        ? userState.user!.bookings.first
+        : null;
+    if (booking == null) return;
+    final existing = _bookedDocksPerStation[booking.stationId];
+    if (existing == null || !existing.contains(booking.dockId)) {
+      _bookedDocksPerStation[booking.stationId] = {booking.dockId};
+      notifyListeners();
+    }
+  }
+
+  @override
+  void dispose() {
+    userState.removeListener(_onUserStateChanged);
+    super.dispose();
+  }
 
   List<Station> get filteredStations {
     final all = stations;
@@ -53,36 +86,6 @@ class MapViewModel extends ChangeNotifier {
   ) async {
     recordBookings(stationId, bookedDockIds);
     await loadStations();
-  }
-
-  MapViewModel({required this.stationRepository, required UserState userState})
-    : _userState = userState {
-    final booking = _userState.user?.bookings.isNotEmpty == true
-        ? _userState.user!.bookings.first
-        : null;
-    if (booking != null) {
-      _bookedDocksPerStation[booking.stationId] = {booking.dockId};
-    }
-    _userState.addListener(_onUserStateChanged);
-    loadStations();
-  }
-
-  void _onUserStateChanged() {
-    final booking = _userState.user?.bookings.isNotEmpty == true
-        ? _userState.user!.bookings.first
-        : null;
-    if (booking == null) return;
-    final existing = _bookedDocksPerStation[booking.stationId];
-    if (existing == null || !existing.contains(booking.dockId)) {
-      _bookedDocksPerStation[booking.stationId] = {booking.dockId};
-      notifyListeners();
-    }
-  }
-
-  @override
-  void dispose() {
-    _userState.removeListener(_onUserStateChanged);
-    super.dispose();
   }
 
   Future<void> loadStations() async {
