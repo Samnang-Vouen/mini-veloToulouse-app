@@ -45,8 +45,7 @@ class _MapContentState extends State<MapContent> {
                     height: 48,
                     child: GestureDetector(
                       onTap: () {
-                        final mapVm = context.read<MapViewModel>();
-                        final alreadyBooked = mapVm.getBookedDocks(station.id);
+                        final alreadyBooked = vm.getBookedDocks(station.id);
                         Navigator.push<Set<String>>(
                           context,
                           MaterialPageRoute(
@@ -57,7 +56,7 @@ class _MapContentState extends State<MapContent> {
                           ),
                         ).then((bookedDockIds) {
                           if (!context.mounted) return;
-                          mapVm.onStationDetailClosed(
+                          vm.onStationDetailClosed(
                             station.id,
                             bookedDockIds ?? {},
                           );
@@ -96,7 +95,7 @@ class _MapContentState extends State<MapContent> {
               child: SafeArea(
                 child: _ErrorBanner(
                   message: vm.stationsValue.error.toString(),
-                  onRetry: () => context.read<MapViewModel>().loadStations(),
+                  onRetry: () => vm.loadStations(),
                 ),
               ),
             ),
